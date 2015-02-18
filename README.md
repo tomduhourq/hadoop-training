@@ -2,6 +2,13 @@
 
 This is a repo intended to learn the principles of Hadoop with training provided by Globant.
 
+To run the examples, you should check the paths provided in the projects and change them to your needs.
+
+To run any of the examples:
+
+```bash
+  $HADOOP_COMMON_HOME/bin/hadoop jar path/to/jar mainClass
+```
 This won't contain at any point none of these files:
 
 - Hdfs-site.xml
