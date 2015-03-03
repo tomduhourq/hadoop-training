@@ -11,7 +11,8 @@ To run the examples, you should check the paths provided in the projects and cha
 To run any of the examples:
 
 ```bash
-  $HADOOP_COMMON_HOME/bin/hadoop jar path/to/jar mainClass arg1 arg2 ...
+  $ mvn clean install
+  $ $HADOOP_COMMON_HOME/bin/hadoop jar path/to/jar mainClass arg1 arg2 ...
 ```
 This won't contain at any point none of these files:
 
