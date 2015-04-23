@@ -3,9 +3,8 @@
 This is a repo intended to learn the principles of Hadoop with training provided by Globant.
 
 Configuration of local hdfs and cluster runs by your own, however you can check my guide on installing Hadoop on a single node cluster:
-
-	- [My guide](https://github.com/tomduhourq/dotfiles/blob/master/install/Hadoop.md)
-  	- [Hadoop 2.6.0 single node installation for Ubuntu](https://www.youtube.com/watch?v=3UvR9nDsU7s)
+- [My guide](https://github.com/tomduhourq/dotfiles/blob/master/install/Hadoop.md)
+- [Hadoop 2.6.0 single node installation for Ubuntu](https://www.youtube.com/watch?v=3UvR9nDsU7s)
 
 To run the examples, you should check the paths provided in the projects and change them to your needs.
 
