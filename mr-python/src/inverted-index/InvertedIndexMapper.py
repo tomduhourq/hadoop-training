@@ -8,7 +8,7 @@ for line in sys.stdin:
     # Get the words from the line
     words = line.strip().split()
     # Get file name
-    file_name = os.environ['map.input.file']
+    file_name = os.environ.get('map.input.file', None)
 
     for word in words:
         # Update the file's offset in the dictionary
