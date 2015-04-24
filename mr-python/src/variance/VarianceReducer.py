@@ -11,8 +11,8 @@ def variance(l, mean, count):
     return sum(list(map((lambda x: (x - mean) ** 2/(count - 1)), l)))
 
 
-def print_tuple(col, l, sum, count):
-    print '%s\t%s' % (col, str(variance(l, sum / count, count)))
+def print_tuple(col, l, s, count):
+    print '%s\t%s' % (col, str(variance(l, s / count, count)))
 
 for line in sys.stdin:
     column, value = line.rstrip('\t', 1)
@@ -34,6 +34,6 @@ for line in sys.stdin:
         current_sum = value
         current_column = column
 
-    # Last output if needed
-    if current_column == column:
-        print_tuple(column, current_list, current_sum, current_count)
+# Last output if needed
+if current_column == column:
+    print_tuple(column, current_list, current_sum, current_count)
