@@ -1,4 +1,3 @@
-__author__ = 'tomas.duhourq'
 import sys
 
 current_word = None

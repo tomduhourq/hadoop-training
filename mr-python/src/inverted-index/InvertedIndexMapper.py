@@ -1,16 +1,15 @@
-__author__ = 'tomas.duhourq'
 import sys
 import os
 
-# Dictionary containing file_name -> current offset
-offsets = dict()
 for line in sys.stdin:
     # Get the words from the line
     words = line.strip().split()
-    # Get file name
+    # Get file name and offset
     file_name = os.environ.get('map.input.file', None)
+    # Get the starting offset of the split
+    offset = os.environ.get('map.input.start', None)
 
     for word in words:
-        # Update the file's offset in the dictionary
-        offsets[file_name] = offsets.get(file_name, 0) + len(word)
-        print '%s\t%s' % (word, file_name + ':' + offsets[file_name])
+        # Accumulate the length of the word
+        offset += len(word)
+        print '%s\t%s' % (word, file_name + ':' + offset)
