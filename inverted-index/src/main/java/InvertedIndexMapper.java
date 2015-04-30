@@ -1,30 +1,33 @@
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+
 
 /*
- * Sample Data Document=text
- * T[0]=it is what it is
- * T[1]=what is it
- * T[2]=it is a banana
+ * Sample Data words and words
+ * it is what it is
+ * what is it
+ * it is a banana
  */
 
 public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Text> {
 
-    private Text wordText = new Text();
-    private final static Text document = new Text();
-
-    protected void map(LongWritable key, Text value, Context context)
+    @Override
+    public void map(LongWritable key, Text value, Context context)
             throws java.io.IOException, InterruptedException {
-        String[] line = value.toString().split("=");
 
-        String documentName = line[0];
-        document.set(documentName);
-        String textStr = line[1];
-        String[] wordArray = textStr.split(" ");
-        for(int i = 0; i <  wordArray.length; i++) {
-            wordText.set(wordArray[i]);
-            context.write(wordText,document);
+        //Get the input file name
+        FileSplit fs = ((FileSplit) context.getInputSplit());
+        String filePathString = fs.getPath().getName();
+
+        //Split the words separated by blanks
+        String[] words = value.toString().split(" ");
+
+        //Why the fuck can't we have a foreach?
+        for(String word: words) {
+            // Until I find a better way output is word fileName:start
+            context.write(new Text(word), new Text(filePathString+":"+fs.getStart()));
         }
     }
 }

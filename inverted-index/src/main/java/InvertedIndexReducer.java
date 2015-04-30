@@ -2,17 +2,17 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
 public class InvertedIndexReducer extends Reducer<Text, Text, Text, Text> {
-    protected void reduce(Text key, Iterable<Text> values, Context context)
+
+    @Override
+    public void reduce(Text key, Iterable<Text> values, Context context)
             throws java.io.IOException, InterruptedException {
-        StringBuffer buffer = new StringBuffer();
-        for (Text value : values) {
-            if(buffer.length() != 0) {
-                buffer.append(" ");
-            }
-            buffer.append(value.toString());
+
+        String apparitions = "";
+
+        // Could' ve been done like values.foldLeft("")(_ + _)
+        for(Text apparition : values){
+            apparitions += ", " + apparition;
         }
-        Text documentList = new Text();
-        documentList.set(buffer.toString());
-        context.write(key, documentList);
+        context.write(key, new Text(apparitions));
     }
 }
