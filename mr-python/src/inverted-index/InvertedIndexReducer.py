@@ -5,7 +5,7 @@ current_offset = None
 word = None
 
 for line in sys.stdin:
-    word, offset = line.strip().split('\t', 1)
+    word, offset = line.strip().split('\t')
     if current_word == word:
         current_offset += ', ' + offset
     else:
