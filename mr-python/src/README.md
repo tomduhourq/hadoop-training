@@ -2,7 +2,8 @@
 
 To run each of the examples
 
-```$ hadoop \
+````bash
+$ hadoop \
 jar $HADOOP_INSTALL/share/hadoop/tools/lib/hadoop-streaming-<version>.jar \
 -D mapred.map.tasks=5 \     ← optional 
 -D mapred.reduce.tasks=2 \  ← optional 
@@ -11,4 +12,5 @@ jar $HADOOP_INSTALL/share/hadoop/tools/lib/hadoop-streaming-<version>.jar \
 -combiner "python ./combiner.py" ← optional
 -reducer "python ./reducer.py" \
 -input <path-for-data-in-hdfs> \
--output <path-in-hdfs> ```
+-output <path-in-hdfs> 
+````
