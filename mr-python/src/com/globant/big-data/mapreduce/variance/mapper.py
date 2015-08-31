@@ -6,4 +6,4 @@ for line in sys.stdin:
     for n in nums:
         column += 1
         # map numbers to (column, num)
-        print '%s\t%s_%s' % (column, n, 1)
+        print '%s\t%s' % (column, n)

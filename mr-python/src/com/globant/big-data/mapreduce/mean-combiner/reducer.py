@@ -1,28 +1,28 @@
 import sys
 
-current_key = None
-current_sum = 0
-current_count = 0
+elements = []
+
+def calcVariance(current_column):
+    sum_elemnts = sum(elements)
+    count_elements = len(elements)
+    media = sum_elemnts / count_elements
+    diff_media_elements = [(x - media) ** 2 for x in elements]
+    variance = sum(diff_media_elements) / (count_elements - 1)
+    print '%s\t%s' % (current_column, variance)
 
 for line in sys.stdin:
-    key, data = line.strip().split('\t')
-    value, amount = data.split('_')
 
-    value = float(value)
-    amount = float(amount)
+    line = line.strip()
 
-    # same word as we were processing before
-    if current_key == key:
-        current_sum += value
-        current_count += amount
+    column, number = line.split('\t')
+
+    if current_column == column:
+        elements.append(float(number))
     else:
-        # changed key
-        # first, compare to None
-        if current_key:
-            print '%s\t%s' % (current_key, current_sum/current_count)
-        current_count = amount
-        current_key = key
-        current_sum = value
+	if current_column:
+            calcVariance(current_column)
+    current_column = column
+    elements = [float(number)]
 
-if current_key == key:
-    print '%s\t%s' % (current_key, current_sum/current_count)
+if current_column == column:
+    calcVariance(current_column)
