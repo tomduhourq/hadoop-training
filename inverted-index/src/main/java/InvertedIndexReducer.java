@@ -9,7 +9,7 @@ public class InvertedIndexReducer extends Reducer<Text, Text, Text, Text> {
 
         String apparitions = "";
 
-        // Could' ve been done like values.foldLeft("")(_ + _)
+        // Could' ve been done like values.foldLeft("")(_ + ", " + _)
         for(Text apparition : values){
             apparitions += ", " + apparition;
         }

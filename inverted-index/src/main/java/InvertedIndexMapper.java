@@ -27,7 +27,9 @@ public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Text> 
         //Why the fuck can't we have a foreach?
         for(String word: words) {
             // Until I find a better way output is word fileName:start
-            context.write(new Text(word), new Text(filePathString+":"+fs.getStart()));
+            context.write(new Text(word), new Text(filePathString+":"+
+                    (fs.getLength() - fs.getStart())
+            ));
         }
     }
 }
