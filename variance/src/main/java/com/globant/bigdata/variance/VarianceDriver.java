@@ -1,7 +1,8 @@
-package com.globant.bigdata.invertedindex;
+package com.globant.bigdata.variance;
 
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
@@ -29,9 +30,11 @@ public class VarianceDriver extends Configured implements Tool {
         job.setMapperClass(VarianceMapper.class);
         job.setReducerClass(VarianceReducer.class);
 
-        // Output will be word  comma-separated-apparitions
-        job.setOutputKeyClass(ImmutableDoubleWritable.class);
-        job.setOutputValueClass(ImmutableDoubleWritable.class);
+        job.setMapOutputKeyClass(ImmutableDoubleWritable.class);
+        job.setMapOutputValueClass(ImmutableDoubleWritable.class);
+
+        job.setOutputKeyClass(Text.class);
+        job.setOutputValueClass(Text.class);
 
         FileInputFormat.addInputPath(job, new Path(args[0]));
         FileOutputFormat.setOutputPath(job, new Path(args[1]));

@@ -1,4 +1,4 @@
-import com.globant.bigdata.invertedindex.ImmutableDoubleWritable;
+import com.globant.bigdata.variance.ImmutableDoubleWritable;
 import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ public class ImmutableDoubleWritableTest {
     public void setUp(){
         i1 = new ImmutableDoubleWritable(2.0);
         i2 = new ImmutableDoubleWritable(5.0);
-        problematic = new ImmutableDoubleWritable(0.0);
+        problematic = new ImmutableDoubleWritable();
     }
 
     @Test
@@ -24,7 +24,8 @@ public class ImmutableDoubleWritableTest {
 
     @Test
     public void plusTest() {
-        Assert.assertEquals(7.0, i1.plus(i2).get());
+        ImmutableDoubleWritable res = i1.plus(i2);
+        Assert.assertEquals(12.0, res.plus(i2).get());
     }
 
     @Test
@@ -41,4 +42,7 @@ public class ImmutableDoubleWritableTest {
     public void powTest() {
         Assert.assertEquals(32.0, i1.pow(5).get());
     }
+
+    @Test
+    public void complicatedTest() { Assert.assertEquals(9.0, i2.sub(i1).pow(2).get());}
 }

@@ -1,4 +1,4 @@
-package com.globant.bigdata.invertedindex;
+package com.globant.bigdata.variance;
 
 public class ImmutableDoubleWritable extends org.apache.hadoop.io.DoubleWritable {
 

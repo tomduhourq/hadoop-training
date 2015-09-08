@@ -1,4 +1,4 @@
-package com.globant.bigdata.invertedindex;
+package com.globant.bigdata.variance;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
